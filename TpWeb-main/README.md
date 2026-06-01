@@ -1,4 +1,4 @@
-# Research Paper Platform
+# ScholarIA - Research Paper Platform
 
 A full-stack application for publishing, discovering, and collaborating on research papers with AI-powered features.
 
@@ -21,14 +21,14 @@ This platform enables researchers to:
 - **API Documentation**: OpenAPI/Swagger 3.0.2
 - **Port**: 9090
 
-### Frontend (Next.js)
-- **Framework**: Next.js 16.1.6
-- **Language**: TypeScript
-- **UI**: React 19.2.3, Tailwind CSS
-- **HTTP Client**: Axios
-- **Notifications**: Sonner
-- **Icons**: FontAwesome
-- **Port**: 3000
+### Frontend (Angular)
+- **Framework**: Angular 16.2.0
+- **Language**: TypeScript 5.1.3
+- **UI**: Angular Material 16.2.0, Tailwind CSS 3.4.19
+- **HTTP Client**: HttpClient (Angular)
+- **Notifications**: SweetAlert2
+- **Icons**: FontAwesome 6.4.0
+- **Port**: 4200
 
 ### AI Services
 - **Comment Moderation**: FastAPI with profanity detection (port 8000)
@@ -100,13 +100,13 @@ TpWeb-main/
 - OpenAPI/Swagger
 
 ### Frontend Dependencies
-- Next.js 16.1.6
-- React 19.2.3
-- TypeScript
-- Tailwind CSS
-- Axios
-- Sonner
-- FontAwesome
+- Angular 16.2.0
+- Angular Material 16.2.0
+- TypeScript 5.1.3
+- Tailwind CSS 3.4.19
+- RxJS 7.8.0
+- SweetAlert2
+- FontAwesome 6.4.0
 
 ### AI Services
 - FastAPI
@@ -142,7 +142,7 @@ Backend runs on `http://localhost:9090`
 ```bash
 cd angular/scholarIA
 npm install
-npm run dev
+ng serve
 ```
 Frontend runs on `http://localhost:4200`
 
@@ -212,16 +212,18 @@ The application uses PostgreSQL with the following main entities:
 ## 🧪 Testing
 
 ### Test User Flow
-1. Signup at `/signup`
-2. Login at `/signin`
-3. Publish paper at `/user/papers/publish`
-4. Create collections at `/user/collections`
-5. Chat with AI at `/user/llm`
+1. Signup at `/sign-up`
+2. Login at `/sign-in`
+3. Access dashboard at `/user/dashboard`
+4. Manage courses at `/user/courses`
+5. View profile at `/user/profile`
 
 ### Test Admin Flow
 1. Login as admin
 2. View dashboard at `/admin/dashboard`
-3. Validate papers at `/admin/papers/validation`
+3. Manage users at `/admin/users`
+4. Manage courses at `/admin/courses`
+5. View reports at `/admin/reports`
 
 ## 🐳 Docker Support
 
@@ -244,9 +246,12 @@ jwt:
   secret: ${JWT_SECRET}
 ```
 
-### Frontend (.env.local)
-```
-NEXT_PUBLIC_API_URL=http://localhost:9090/api
+### Frontend (environment.ts)
+```typescript
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:9090/api'
+};
 ```
 
 ## 🤝 Contributing
@@ -269,7 +274,7 @@ MIT License - See LICENSE file for details
 - [ ] Advanced search with filters
 - [ ] Paper recommendation engine (in progress)
 - [ ] Notification system
-- [ ] Mobile app (React Native)
+- [ ] Mobile app (Ionic or Angular Mobile)
 - [ ] Paper versioning
 - [ ] Collaboration features
 - [ ] Email notifications
